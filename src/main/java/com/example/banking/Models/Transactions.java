@@ -34,8 +34,6 @@ public class Transactions {
 		@Column(name = "amount")
 		private double amount;
 		
-		@ManyToMany
-		private List<User> user; 
 		
 		public String getTransactionId() {
 			return transactionId;
@@ -68,12 +66,12 @@ public class Transactions {
 		public void setAmount(double amount) {
 			this.amount = amount;
 		}
-		public List<User> getUser() {
-			return user;
-		}
-		public void setUser(List<User> user) {
-			this.user = user;
+		
+		@Override
+		public String toString() {
+			return "Transactions [transactionId=" + transactionId + ", cardId=" + cardId + ", transactionDate="
+					+ transactionDate + ", transactionType=" + transactionType + ", amount=" + amount +  "]";
 		}
         
-
+   
 }
