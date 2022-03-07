@@ -29,7 +29,6 @@ public  class UserDao{
 	public User findByAccountNo(Login login) {
 		user = em.find(User.class, login.getAccountNo());
 		System.out.println(user);
-		System.out.println(login);
 		if( user!=null&& (user.getPassword().equals(login.getPassword())))
 		{
 		return user;
@@ -39,6 +38,26 @@ public  class UserDao{
 		}
 		
 	}
+	
+	public User getProfile(Long accounNo) {
+		user = em.find(User.class, accounNo);
+		System.out.println(user);
+		
+		return user;
+		
+		
+	}
+	
+	
+	public List<User> getAllUser() {
+		List<User> user = (List<User>) em.createQuery("select U from User");
+		System.out.println(user);
+		
+		return user;
+		
+		
+	}
+	
 	@Transactional
 	public User register(User user) {
 	 em.persist(user);

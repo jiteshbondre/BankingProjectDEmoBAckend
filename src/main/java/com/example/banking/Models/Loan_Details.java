@@ -1,5 +1,7 @@
 package com.example.banking.Models;
 
+import java.util.Random;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,9 +9,11 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Loan_Details {
+	Random random = new Random();   
+
 	@Id
 	@Column(name = "loanAppId")
-	private String loanAppId;
+	private long loanAppId=random.nextInt(1000000);;
 	
 	@Column(name = "status")
 	private String status;
@@ -21,16 +25,14 @@ public class Loan_Details {
 	private double ammountIssued;
 	
 	
-	@ManyToOne
-	private Loan loan;
+	private long loan;
 	
-	@ManyToOne
-	private User user;
+	private long user;
 	
-	public String getLoanAppId() {
+	public long getLoanAppId() {
 		return loanAppId;
 	}
-	public void setLoanAppId(String loanAppId) {
+	public void setLoanAppId(long loanAppId) {
 		this.loanAppId = loanAppId;
 	}
 	public String getStatus() {
@@ -51,16 +53,16 @@ public class Loan_Details {
 	public void setAmmountIssued(double ammountIssued) {
 		this.ammountIssued = ammountIssued;
 	}
-	public Loan getLoan() {
+	public long getLoan() {
 		return loan;
 	}
-	public void setLoan(Loan loan) {
+	public void setLoan(long loan) {
 		this.loan = loan;
 	}
-	public User getUser() {
+	public long getUser() {
 		return user;
 	}
-	public void setUser(User user) {
+	public void setUser(long user) {
 		this.user = user;
 	}
 	

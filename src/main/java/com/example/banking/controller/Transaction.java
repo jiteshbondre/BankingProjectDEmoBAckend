@@ -9,20 +9,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.banking.DAO.TransactionDao;
-import com.example.banking.Models.Transactions;
 import com.example.banking.Models.User;
+import com.example.banking.service.TransactionService;
+
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class Transaction {
 	
 	@Autowired
-	TransactionDao TD;
+	TransactionService TD;
 	
-	@PostMapping("/transaction")
-	public List<Transactions> getTransaction(@RequestBody User user)
+	@PostMapping("/transaction") 
+	public List<com.example.banking.beans.Transaction> getTransaction(@RequestBody User user)
 	{    
-		List<Transactions> t=TD.getTransaction(user);
+		List<com.example.banking.beans.Transaction> t=TD.getTransaction(user);
 		return t;
 	}
 
